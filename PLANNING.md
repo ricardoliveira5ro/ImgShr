@@ -31,10 +31,10 @@ A simple, fast image-sharing web app
 
 ##### 🚀 Milestone 1 – Project Setup
 
-- [ ] Initialize Next.js project with Tailwind CSS
-- [ ] Configure TypeScript for strong typing
-- [ ] Setup `.env.local` for secrets (Cloudinary, DB, etc.)
-- [ ] Configure Prettier and ESLint for code consistency
+- [x] Initialize Next.js project with Tailwind CSS
+- [x] Configure TypeScript for strong typing
+- [x] Setup `.env.local` for secrets (Cloudinary, DB, etc.)
+- [x] Configure Prettier and ESLint for code consistency
 
 ---
 
@@ -78,3 +78,4 @@ A simple, fast image-sharing web app
 
 - [ ] Add auto-delete for images after x days
 - [ ] Allow password-protected image access
+- [ ] Restrict Firestore database access rules
