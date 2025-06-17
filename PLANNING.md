@@ -79,3 +79,4 @@ A simple, fast image-sharing web app
 - [ ] Add auto-delete for images after x days
 - [ ] Allow password-protected image access
 - [ ] Restrict Firestore database access rules
+- [ ] Restrict API access by IP (x-forwarded-for by Vercel)
