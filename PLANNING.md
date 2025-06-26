@@ -40,8 +40,8 @@ A simple, fast image-sharing web app
 
 ##### 🛠 Milestone 2 – Upload Flow (Backend First)
 
-- [ ] Create API route: `/api/sign-url` to generate signed upload URLs
-- [ ] Create API route: `/api/upload-image` to store image metadata
+- [x] Create API route: `/api/sign-url` to generate signed upload URLs
+- [x] Create API route: `/api/upload-image` to store image metadata
 - [ ] Validate file uploads (max 5MB, allowed types: JPG, PNG, WebP)
 - [ ] Implement IP-based rate limiting for uploads
 
