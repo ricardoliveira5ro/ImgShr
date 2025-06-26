@@ -5,7 +5,7 @@ export const protectedRoutes: MiddlewareFactory = (next) => {
     return async(request: NextRequest, _next: NextFetchEvent) => {
         const { pathname } = request.nextUrl;
 
-        const protectedRoutes = ["/api/health", "/api/sign-url"];
+        const protectedRoutes = ["/api/health", "/api/sign-url", "/api/upload-image"];
 
         if (protectedRoutes.includes(pathname)) {
             const authHeader = request.headers.get("authorization");
