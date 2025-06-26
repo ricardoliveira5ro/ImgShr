@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { addDoc, collection } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
 import { db } from "@/lib/firebaseConfig";
 
 export async function POST(request: Request) {
@@ -11,7 +11,7 @@ export async function POST(request: Request) {
         if (secureUrlParts[3] !== process.env.CLOUDINARY_CLOUD_NAME || secureUrlParts[secureUrlParts.length - 1].split('.')[0] !== public_id)
             return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
     
-        await addDoc(collection(db, "images"), {
+        await setDoc(doc(db, "images", public_id), {
             public_id,
             secure_url,
             original_filename,
