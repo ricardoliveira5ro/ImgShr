@@ -1,0 +1,17 @@
+.image-url-input {
+    border: 1px solid #272a33;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.image-url-input:focus {
+    outline: none;
+    border: 1px solid #c79df7;
+}
+
+.image-url-input:focus::placeholder {
+    color: transparent;
+}
+
+input[type="file"] {
+  display: none;
+}
