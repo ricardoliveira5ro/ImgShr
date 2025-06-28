@@ -5,7 +5,10 @@ import DragDrop from "./ui/DragDrop";
 
 export default function Home() {
   return (
-    <div className="flex items-center justify-center h-screen p-8">
+    <div className="flex flex-col items-center h-screen p-12 gap-y-16">
+      <header>
+        <Image src="/logo.png" width={400} height={133} alt="Landscape" priority />
+      </header>
       <main className="grid grid-cols-2 w-fit rounded-md bg-[#3c424b]">
         <DragDrop />
         <div className="flex flex-col items-center justify-center gap-y-4 px-12">
