@@ -6,7 +6,12 @@ import { useRouter } from "next/navigation";
 
 import { generateSignedUrl, updateImageMetadata } from "../actions";
 
-export default function DragDrop() {
+type DragDropProps = {
+    isUploading: boolean;
+    setIsUploading: (uploading: boolean) => void;
+};
+
+export default function DragDrop({ isUploading, setIsUploading }: DragDropProps) {
 
     const router = useRouter();
     const [dragOver, setDragOver] = useState(false);
@@ -22,7 +27,11 @@ export default function DragDrop() {
 
     const handleDrop = async (e: React.DragEvent) => {
         e.preventDefault();
+
+        if (isUploading) return;
+
         setDragOver(false);
+        setIsUploading(true);
 
         const file = e.dataTransfer.files?.[0];
         if (!file) return;
