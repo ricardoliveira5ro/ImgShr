@@ -1,3 +1,5 @@
+/* NOT USED - REPLACED BY SERVER ACTIONS */
+
 import { NextResponse } from "next/server";
 import { setDoc, doc } from "firebase/firestore";
 import { db } from "@/lib/firebaseConfig";

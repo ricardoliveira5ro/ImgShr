@@ -2,9 +2,13 @@
 
 import { useCallback, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+import { generateSignedUrl, updateImageMetadata } from "../actions";
 
 export default function DragDrop() {
 
+    const router = useRouter();
     const [dragOver, setDragOver] = useState(false);
 
     const handleDragOver = useCallback((e: React.DragEvent) => {
@@ -16,7 +20,7 @@ export default function DragDrop() {
         setDragOver(false);
     }, []);
 
-    const handleDrop = useCallback((e: React.DragEvent) => {
+    const handleDrop = async (e: React.DragEvent) => {
         e.preventDefault();
         setDragOver(false);
 
@@ -37,8 +41,21 @@ export default function DragDrop() {
         //   return;
         // }
 
-        console.log("Dropped file:", file);
-    }, []);
+        const { signature, timestamp, api_key, upload_url } = await generateSignedUrl();
+
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("api_key", api_key);
+        formData.append("timestamp", timestamp.toString());
+        formData.append("signature", signature);
+
+        const cloudinaryResponse = await fetch(upload_url, { method: "POST", body: formData });
+        const cloudinaryJson = await cloudinaryResponse.json();
+
+        await updateImageMetadata(cloudinaryJson);
+
+        router.push(`/shr/${cloudinaryJson.public_id}`);
+    };
 
     return (
         <div className={`relative transition rounded-l-md ${dragOver ? "border border-[#c79df7]" : "border-transparent"}`} 
